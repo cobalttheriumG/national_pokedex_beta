@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- TODO MAKE FAVICON FOR HEAD -->
+    <title>Pokedex</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- TODO HEADER -->
+      <header class="header" id="header">
+        <div class="img-wrapper">
+          <!-- TODO LOGO -->
+          <div class="logo">
+            <img src="./assets/logo.png" alt="logo" />
+          </div>
+          <!-- TODO ANIM LOADING -->
+          <div class="load-anim">
+            <img src="./assets/loadinganim.png" alt="anim" />
+          </div>
+        </div>
+      </header>
+
+      <!-- TODO TITLE, SEARCH BAR, AND FILTER BY TYPE -->
+      <nav class="nav" id="nav">
+        <!-- TODO TITLE-->
+        <div class="title">
+          <h3 class="title-large">
+            Pokémon <br />
+            <select name="gen">
+              <option value="gen01">Gen-I</option>
+              <option value="gen02">Gen-II</option>
+              <option value="gen03">Gen-III</option>
+              <option value="gen04">Gen-IV</option>
+              <option value="gen05">Gen-V</option>
+              <option value="gen06">Gen-VI</option>
+              <option value="gen07">Gen-VII</option>
+              <option value="allgen">All Gen</option>
+            </select>
+          </h3>
+          <h5 class="title-small">Pokédex</h5>
+        </div>
+        <div class="filter">
+          <!-- TODO FILTER -->
+          <div class="type-filter">
+            <select name="type">
+              <option value="">all types</option>
+              <option value="normal">normal</option>
+              <option value="fire">fire</option>
+              <option value="water">water</option>
+              <option value="grass">grass</option>
+              <option value="electric">electric</option>
+              <option value="ice">ice</option>
+              <option value="fighting">fighting</option>
+              <option value="poison">poison</option>
+              <option value="ground">ground</option>
+              <option value="flying">flying</option>
+              <option value="psychic">psychic</option>
+              <option value="bug">bug</option>
+              <option value="rock">rock</option>
+              <option value="ghost">ghost</option>
+              <option value="dragon">dragon</option>
+              <option value="dark">dark</option>
+              <option value="steel">steel</option>
+              <option value="fairy">fairy</option>
+            </select>
+          </div>
+          <!-- TODO SEARCH BAR -->
+          <div class="search-bar">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search Pokemon"
+            />
+          </div>
+        </div>
+      </nav>
+
+      <!-- TODO DETAILS WRAPPER  -->
+      <main class="main" id="main">
+        <!-- TODO RENDER POKEMON DETAILS -->
+        <div class="info-details">
+          <h1>
+            Click <br />
+            Pokémon <br />
+            for <br />
+            Details
+          </h1>
+        </div>
+      </main>
+
+      <!-- TODO POKEMON WRAPPERS -->
+      <section class="section" id="section">
+        <div class="pokemons-wrapper"></div>
+      </section>
+
+      <!-- TODO FOOTER -->
+      <footer class="footer" id="footer">
+        <div class="copyright-wrapper">
+          <h5 class="text-small">
+            REST API by PokéAPI <br />
+            SITE by CHRNBM
+          </h5>
+          <h5 class="text-small">ⒸPokémon National Pokédex, 2020</h5>
+        </div>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"
+      integrity="sha256-hBMojZuWKocCflyaG8T19KBq9OlTlK39CTxb8AUWKhY="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

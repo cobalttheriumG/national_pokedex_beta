@@ -1,0 +1,650 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "Monument UB";
+  src: url("/assets/font/MonumentExtended-Ultrabold.otf") format("opentype");
+}
+
+:root {
+  --back-color: #0d0d0d;
+  --font-color: #f6f6f6;
+  --normal: #a8a878;
+  --fighting: #c03028;
+  --flying: #a890f0;
+  --poison: #a040a0;
+  --ground: #e0c068;
+  --rock: #e0c068;
+  --bug: #a8b820;
+  --ghost: #705898;
+  --steel: #b8b8d0;
+  --fire: #f08030;
+  --water: #6890f0;
+  --grass: #78c850;
+  --electric: #f8d030;
+  --psychic: #f85888;
+  --ice: #98d8d8;
+  --dragon: #7038f8;
+  --dark: #705848;
+  --fairy: #ee99ac;
+}
+
+.text-medium {
+  font-size: 16px;
+}
+
+.text-large {
+  font-size: 18px;
+}
+
+.text-small {
+  font-size: 15px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.type-box {
+  display: inline-block;
+  padding: 0 5px;
+  margin: 1px;
+  border-radius: 5px;
+  color: var(--back-color);
+}
+
+// * LAYOUTING
+body {
+  width: 100%;
+  background-color: var(--back-color);
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  grid-template-rows: 40px 1.6fr 0.5fr 35px;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "section section"
+    "footer footer";
+  grid-gap: 1vw;
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  align-items: flex-end;
+
+  .img-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  select {
+    border: 0;
+    background-color: var(--back-color);
+    color: var(--font-color);
+    padding: 0;
+    margin: 0;
+    align-items: flex-start;
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    option {
+      padding: 0;
+    }
+  }
+
+  input[name="search"] {
+    width: 30vw;
+    border: 0;
+    border-bottom: 1px solid var(--font-color);
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    background-color: var(--back-color);
+    color: var(--font-color);
+    padding: 0;
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  input[name="search"]::-webkit-input-placeholder {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+  }
+
+  input[name="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+
+  input[name="search"]:focus {
+    outline: none;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  .title {
+    font-family: Monument UB;
+    color: var(--font-color);
+
+    select[name="gen"] {
+      font-family: Monument UB;
+      font-size: 60px;
+    }
+
+    .title-large {
+      font-size: 60px;
+      line-height: 40px;
+      margin-top: 10px;
+    }
+
+    .title-small {
+      font-family: Roboto, sans-serif;
+      font-weight: 700;
+      font-size: 35px;
+    }
+  }
+
+  .filter {
+    .type-filter {
+      margin-bottom: 10px;
+
+      select[name="type"] {
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        text-transform: capitalize;
+        border: 1px solid var(--font-color);
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+section {
+  width: 100%;
+  grid-area: section;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .pokemons-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    margin: 0.2vw 0;
+    scrollbar-color: var(--font-color) var(--back-color);
+    scrollbar-width: 5px;
+
+    .pokemon-wrapper {
+      width: 180px;
+      height: 180px;
+      display: flex;
+      flex-shrink: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-right: 2vw;
+      border: 1px solid var(--font-color);
+      border-radius: 50%;
+      transition: 0.3s ease;
+
+      .pokemon-img {
+        img {
+          display: inline-block;
+          width: 120px;
+          height: 120px;
+          transform: scale(0.8);
+          transition: 0.3s ease;
+          cursor: pointer;
+        }
+        img:hover {
+          transform: scale(1);
+        }
+      }
+
+      .pokemon-name {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h5 {
+          font-family: Roboto, sans-serif;
+          color: var(--font-color);
+        }
+      }
+    }
+  }
+
+  .pokemon-wrapper:hover {
+    background-color: grey;
+  }
+
+  .pokemons-wrapper::-webkit-scrollbar {
+    appearance: none;
+    -moz-appearance: none;
+    height: 5px;
+  }
+
+  .pokemons-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--font-color);
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
+
+main {
+  grid-area: main;
+  color: var(--font-color);
+  font-family: Roboto, sans-serif;
+
+  .info-details {
+    h1 {
+      font-family: Monument UB;
+      font-size: 72px;
+      line-height: 72px;
+      color: grey;
+    }
+  }
+
+  .details-wrapper {
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-areas:
+      "card stats"
+      "card flavor";
+
+    .pokemon-card {
+      grid-area: card;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 0.5fr;
+      grid-template-areas:
+        "img"
+        "card";
+
+      .img-wrapper {
+        grid-area: img;
+        img {
+          display: inline block;
+          max-width: 200px;
+          min-width: 100px;
+        }
+      }
+
+      .card-text {
+        grid-area: card;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-areas:
+          "name h"
+          "type w";
+        grid-gap: 0.5vw;
+      }
+
+      .head-card-text {
+        grid-area: name;
+      }
+
+      .type-card-text {
+        grid-area: type;
+      }
+      .h-card-text {
+        grid-area: h;
+      }
+      .w-card-text {
+        grid-area: w;
+      }
+    }
+
+    .pokemon-flavor-text {
+      grid-area: flavor;
+    }
+
+    .pokemon-stats {
+      grid-area: stats;
+      display: grid;
+      grid-template-columns: minmax(100px, 160px) repeat(3, minmax(50px, 100px));
+      grid-auto-flow: row;
+      margin-top: 1vw;
+    }
+  }
+}
+
+footer {
+  grid-area: footer;
+
+  .copyright-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    h5 {
+      font-family: Roboto, sans-serif;
+      color: var(--font-color);
+    }
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .text-medium {
+    font-size: 16px;
+  }
+
+  .text-large {
+    font-size: 18px;
+  }
+
+  .text-small {
+    font-size: 14px;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  .type-box {
+    padding: 0 4px;
+    margin: 2px;
+    border-radius: 3px;
+  }
+
+  .container {
+    margin: auto;
+    grid-template-rows: 40px 250px 120px 500px 40px;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "section section"
+      "main main"
+      "footer footer";
+  }
+
+  header {
+    .logo {
+      img {
+        width: 60px;
+      }
+    }
+
+    .load-anim {
+      img {
+        width: 15px;
+      }
+    }
+  }
+
+  nav {
+    .title {
+      .title-large {
+        font-size: 50px;
+        line-height: 30px;
+        margin-top: 10px;
+
+        select[name="gen"] {
+          font-size: 45px;
+        }
+      }
+
+      .title-small {
+        font-size: 25px;
+        margin-top: 10px;
+      }
+    }
+
+    .filter {
+      select[name="type"] {
+        font-size: 16px;
+      }
+      .search-bar {
+        input[name="search"] {
+          width: 100%;
+          font-size: 16px;
+        }
+
+        input[name="search"]::-webkit-input-placeholder {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  main {
+    .info-details {
+      h1 {
+        font-family: Monument UB;
+        font-size: 50px;
+        line-height: 45px;
+        color: grey;
+      }
+    }
+    .details-wrapper {
+      grid-template-rows: 0.5fr 0.3fr 0.5fr;
+      grid-gap: 7px;
+      grid-template-areas:
+        "card card"
+        "flavor flavor"
+        "stats stats";
+
+      .pokemon-card {
+        grid-area: card;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-template-areas: "img card";
+
+        .img-wrapper {
+          grid-area: img;
+          img {
+            display: inline-block;
+            width: 180px;
+          }
+        }
+
+        .card-text {
+          grid-area: card;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+      }
+
+      .pokemon-flavor-text {
+        grid-area: flavor;
+      }
+
+      .pokemon-stats {
+        grid-area: stats;
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1vw;
+      }
+    }
+  }
+
+  section {
+    .pokemons-wrapper {
+      .pokemon-wrapper {
+        width: 80px;
+        height: 80px;
+        margin-right: 5px;
+        .pokemon-img {
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+
+        .pokemon-name {
+          h5 {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    h5 {
+      font-size: 12px;
+    }
+  }
+}
+
+// TODO LAYOUTING WEB FOR MOBILE FIRST
+// TODO MEDIA QUERY FOR IPHONE AND SAMSUNG STANDARD MOBILE SIZE SCREEN
+// TODO USE CSS GRID FOR RESPONSIVE WEB
+// TODO USE VW MEASUREMENT FOR RESPONSIVE
