@@ -135,7 +135,7 @@ table {
 
 @font-face {
   font-family: "mon ub";
-  src: url("./assets/font/MonumentExtended-Ultrabold.otf") format("opentype");
+  src: url("../assets/font/MonumentExtended-Ultrabold.otf") format("opentype");
 }
 
 :root {
