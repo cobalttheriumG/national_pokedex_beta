@@ -304,11 +304,13 @@ nav select:focus {
 
 nav .title {
   font-family: "mon ub", Roboto, sans-serif;
+  font-weight: 900;
   color: var(--font-color);
 }
 
 nav .title select[name="gen"] {
   font-family: "mon ub", Roboto, sans-serif;
+  font-weight: 900;
   font-size: 60px;
 }
 
@@ -454,6 +456,7 @@ main {
 main .info-details h1 {
   font-family: "mon ub", Roboto, sans-serif;
   font-size: 72px;
+  font-weight: 900;
   line-height: 72px;
   color: grey;
 }
