@@ -135,7 +135,7 @@ table {
 
 @font-face {
   font-family: "mon ub";
-  src: url("../national_pokedex_beta/assets/font/MonumentExtended-Ultrabold.otf") format("opentype");
+  src: url("./national_pokedex_beta/assets/font/MonumentExtended-Ultrabold.otf") format("opentype");
 }
 
 :root {
@@ -309,7 +309,7 @@ nav .title {
 }
 
 nav .title select[name="gen"] {
-   margin-top: 10px;
+  margin-top: 5px;
   font-family: "mon ub", Roboto, sans-serif;
   font-weight: 900;
   font-size: 60px;
