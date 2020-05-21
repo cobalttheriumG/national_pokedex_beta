@@ -185,6 +185,10 @@ table {
   text-transform: uppercase;
 }
 
+.align-right {
+   text-align: right; 
+}
+
 .type-box {
   display: inline-block;
   padding: 0 5px;
