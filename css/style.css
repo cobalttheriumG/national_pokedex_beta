@@ -134,7 +134,7 @@ table {
 }
 
 @font-face {
-  font-family: "Monument UB";
+  font-family: "mon ub";
   src: url("/assets/font/MonumentExtended-Ultrabold.otf") format("opentype");
 }
 
@@ -207,7 +207,10 @@ body {
       grid-template-columns: 1.2fr 2fr;
   -ms-grid-rows: 40px 1.6fr 0.5fr 35px;
       grid-template-rows: 40px 1.6fr 0.5fr 35px;
-      grid-template-areas: "header header" "nav main" "section section" "footer footer";
+      grid-template-areas: "header header"
+ "nav main"
+ "section section"
+ "footer footer";
   grid-gap: 1vw;
 }
 
@@ -300,12 +303,12 @@ nav select:focus {
 }
 
 nav .title {
-  font-family: Monument UB;
+  font-family: "mon ub", Roboto, sans-serif;
   color: var(--font-color);
 }
 
 nav .title select[name="gen"] {
-  font-family: Monument UB;
+  font-family: "mon ub", Roboto, sans-serif;
   font-size: 60px;
 }
 
@@ -449,7 +452,7 @@ main {
 }
 
 main .info-details h1 {
-  font-family: Monument UB;
+  font-family: "mon ub", Roboto, sans-serif;
   font-size: 72px;
   line-height: 72px;
   color: grey;
@@ -462,7 +465,8 @@ main .details-wrapper {
       grid-template-columns: 0.4fr 1fr;
   -ms-grid-rows: 1fr 0.5fr;
       grid-template-rows: 1fr 0.5fr;
-      grid-template-areas: "card stats" "card flavor";
+      grid-template-areas: "card stats"
+ "card flavor";
 }
 
 main .details-wrapper .pokemon-card {
@@ -473,7 +477,8 @@ main .details-wrapper .pokemon-card {
   display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 0.5fr;
-      grid-template-areas: "img" "card";
+      grid-template-areas: "img"
+ "card";
 }
 
 main .details-wrapper .pokemon-card .img-wrapper {
@@ -496,7 +501,8 @@ main .details-wrapper .pokemon-card .card-text {
   display: grid;
   -ms-grid-columns: 1.2fr 0.8fr;
       grid-template-columns: 1.2fr 0.8fr;
-      grid-template-areas: "name h" "type w";
+      grid-template-areas: "name h"
+ "type w";
   grid-gap: 0.5vw;
 }
 
@@ -585,7 +591,11 @@ footer .copyright-wrapper h5 {
     margin: auto;
     -ms-grid-rows: 40px 250px 120px 500px 40px;
         grid-template-rows: 40px 250px 120px 500px 40px;
-        grid-template-areas: "header header" "nav nav" "section section" "main main" "footer footer";
+        grid-template-areas: "header header"
+ "nav nav"
+ "section section"
+ "main main"
+ "footer footer";
   }
   header .logo img {
     width: 60px;
@@ -625,7 +635,9 @@ footer .copyright-wrapper h5 {
     -ms-grid-rows: 0.5fr 0.3fr 0.5fr;
         grid-template-rows: 0.5fr 0.3fr 0.5fr;
     grid-gap: 7px;
-        grid-template-areas: "card card" "flavor flavor" "stats stats";
+        grid-template-areas: "card card"
+ "flavor flavor"
+ "stats stats";
   }
   main .details-wrapper .pokemon-card {
     -ms-grid-row: 1;
