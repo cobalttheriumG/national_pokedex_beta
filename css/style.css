@@ -309,6 +309,7 @@ nav .title {
 }
 
 nav .title select[name="gen"] {
+   margin-top: 10px;
   font-family: "mon ub", Roboto, sans-serif;
   font-weight: 900;
   font-size: 60px;
