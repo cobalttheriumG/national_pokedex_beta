@@ -140,7 +140,7 @@ async function show(gen) {
   let data_rendered;
   data_rendered = data_poke;
   data_rendered.forEach((x) => {
-    const name_en = get_NAME(data_species, x.name);
+    const name_en = get_NAME(data_species, x.id);
     const rendered = render_POKEMON(x, name_en.name);
     render += rendered;
   });
@@ -154,7 +154,7 @@ async function show(gen) {
     const filtered = filter_TYPE(data_poke, type);
     data_rendered = filtered;
     data_rendered.forEach((x) => {
-      const name_en = get_NAME(data_species, x.name);
+      const name_en = get_NAME(data_species, x.id);
       const rendered = render_POKEMON(x, name_en.name);
       renderFilter += rendered;
     });
@@ -167,7 +167,7 @@ async function show(gen) {
     const input = e.target.value;
     const search = search_POKE(data_rendered, input);
     search.forEach((x) => {
-      const name_en = get_NAME(data_species, x.name);
+      const name_en = get_NAME(data_species, x.id);
       const rendered = render_POKEMON(x, name_en.name);
       renderSearch += rendered;
     });
@@ -402,64 +402,19 @@ function show_NAME(data) {
   return name;
 }
 
-function get_NAME(data_filter, filter_name) {
-  const getName = data_filter.filter(
-    (data) => data.name === fix_NAME(filter_name)
+function get_NAME(data_filter, poke_id) {
+  const getName = data_filter.filter((data) => data.id === poke_id);
+  const [arrayNames] = getName;
+  const name = arrayNames.names.filter((data) =>
+    data.language.name.includes("en")
   );
-  const [y] = getName;
-  const listName = y.names;
-  const name = listName.filter((data) => data.language.name.includes("en"));
   const [name_en] = name;
   return name_en;
 }
 
-function fix_NAME(data) {
-  return data == "deoxys-normal"
-    ? "deoxys"
-    : data == "wormadam-plant"
-    ? "wormadam"
-    : data == "giratina-altered"
-    ? "giratina"
-    : data == "shaymin-land"
-    ? "shaymin"
-    : data == "basculin-red-striped"
-    ? "basculin"
-    : data == "darmanitan-standard"
-    ? "darmanitan"
-    : data == "tornadus-incarnate"
-    ? "tornadus"
-    : data == "thundurus-incarnate"
-    ? "thundurus"
-    : data == "landorus-incarnate"
-    ? "landorus"
-    : data == "keldeo-ordinary"
-    ? "keldeo"
-    : data == "meloetta-aria"
-    ? "meloetta"
-    : data == "meowstic-male"
-    ? "meowstic"
-    : data == "aegislash-shield"
-    ? "aegislash"
-    : data == "pumpkaboo-average"
-    ? "pumpkaboo"
-    : data == "gourgeist-average"
-    ? "gourgeist"
-    : data == "minior-red-meteor"
-    ? "minior"
-    : data == "mimikyu-disguised"
-    ? "mimikyu"
-    : data == "oricorio-baile"
-    ? "oricorio"
-    : data == "lycanroc-midday"
-    ? "lycanroc"
-    : data == "wishiwashi-solo"
-    ? "wishiwashi"
-    : data;
-}
-
 function anim_LOADING(data) {
   anime({
-    targets: pokeBall,
+    targets: data,
     rotate: 360,
     duration: 1200,
     loop: true,
@@ -469,11 +424,12 @@ function anim_LOADING(data) {
 
 function anim_STOP(data) {
   anime({
-    targets: pokeBall,
+    targets: data,
     rotate: 360,
     duration: 1200,
     direction: "alternate",
   });
 }
+
 
 
