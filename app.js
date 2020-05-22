@@ -32,7 +32,8 @@ class pokemon_DATA {
   search_POKE(data, name) {
     const regex = new RegExp(name, "gi");
     return data.filter((poke) => {
-      return poke.name.match(regex);
+      const parseNum = parseInt(name);
+      return poke.name.match(regex) || poke.id === parseNum;
     });
   }
   render_POKEMON(data, name) {
@@ -474,4 +475,5 @@ function anim_STOP(data) {
     direction: "alternate",
   });
 }
+
 
