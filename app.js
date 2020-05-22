@@ -10,7 +10,6 @@ class pokemon_DATA {
     this.offset = offset;
     this.limit = limit;
     this.endpoint = `https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}&limit=${this.limit}`;
-    this.pokemon_data;
   }
   fetch_data(endpoint) {
     anim_LOADING(pokeBall);
@@ -36,7 +35,7 @@ class pokemon_DATA {
       return poke.name.match(regex);
     });
   }
-  render_POKEMON(data) {
+  render_POKEMON(data, name) {
     return `
       <div class="pokemon-wrapper">
         <div class="pokemon-img">
@@ -54,7 +53,7 @@ class pokemon_DATA {
         </div>
         <div class="pokemon-name">
           <h5>#${fix_ID(data.id.toString())}</h5>
-          <h5 class="bold capitalize">${fix_NAME(data.name)}</h5>
+          <h5 class="bold">${name}</h5>
         </div>
       </div>
     `;
@@ -130,12 +129,18 @@ async function show(gen) {
       return fetch_data(x.url);
     })
   );
+  const data_species = await Promise.all(
+    data_poke.map((x) => {
+      return fetch_data(x.species.url);
+    })
+  );
 
   let render = "";
   let data_rendered;
   data_rendered = data_poke;
   data_rendered.forEach((x) => {
-    const rendered = render_POKEMON(x);
+    const name_en = get_NAME(data_species, x.name);
+    const rendered = render_POKEMON(x, name_en.name);
     render += rendered;
   });
 
@@ -148,7 +153,8 @@ async function show(gen) {
     const filtered = filter_TYPE(data_poke, type);
     data_rendered = filtered;
     data_rendered.forEach((x) => {
-      const rendered = render_POKEMON(x);
+      const name_en = get_NAME(data_species, x.name);
+      const rendered = render_POKEMON(x, name_en.name);
       renderFilter += rendered;
     });
     pokeWrapper.innerHTML = renderFilter;
@@ -160,7 +166,8 @@ async function show(gen) {
     const input = e.target.value;
     const search = search_POKE(data_rendered, input);
     search.forEach((x) => {
-      const rendered = render_POKEMON(x);
+      const name_en = get_NAME(data_species, x.name);
+      const rendered = render_POKEMON(x, name_en.name);
       renderSearch += rendered;
     });
     pokeWrapper.innerHTML = renderSearch;
@@ -394,57 +401,58 @@ function show_NAME(data) {
   return name;
 }
 
+function get_NAME(data_filter, filter_name) {
+  const getName = data_filter.filter(
+    (data) => data.name === fix_NAME(filter_name)
+  );
+  const [y] = getName;
+  const listName = y.names;
+  const name = listName.filter((data) => data.language.name.includes("en"));
+  const [name_en] = name;
+  return name_en;
+}
+
 function fix_NAME(data) {
-  return data == "nidoran-m"
-    ? `Nidoran ♂	`
-    : data == "nidoran-f"
-    ? `Nidoran ♀`
-    : data == "mr-mime"
-    ? "Mr. Mime"
-    : data == "deoxys-normal"
-    ? "Deoxys"
+  return data == "deoxys-normal"
+    ? "deoxys"
     : data == "wormadam-plant"
-    ? "Wormadam"
+    ? "wormadam"
     : data == "giratina-altered"
-    ? "Giratina"
+    ? "giratina"
     : data == "shaymin-land"
-    ? "Shaymin"
+    ? "shaymin"
     : data == "basculin-red-striped"
-    ? "Basculin"
+    ? "basculin"
     : data == "darmanitan-standard"
-    ? "Darmanitan"
+    ? "darmanitan"
     : data == "tornadus-incarnate"
-    ? "Tornadus"
+    ? "tornadus"
     : data == "thundurus-incarnate"
-    ? "Thundurus"
+    ? "thundurus"
     : data == "landorus-incarnate"
-    ? "Landorus"
+    ? "landorus"
     : data == "keldeo-ordinary"
-    ? "Keldeo"
+    ? "keldeo"
     : data == "meloetta-aria"
-    ? "Meloetta"
+    ? "meloetta"
     : data == "meowstic-male"
-    ? "Meowstic"
+    ? "meowstic"
     : data == "aegislash-shield"
-    ? "Aegislash"
+    ? "aegislash"
     : data == "pumpkaboo-average"
-    ? "Pumpkaboo"
+    ? "pumpkaboo"
     : data == "gourgeist-average"
-    ? "Gourgeist"
-    : data == "type-null"
-    ? "Type: Null"
+    ? "gourgeist"
     : data == "minior-red-meteor"
-    ? "Minior"
+    ? "minior"
     : data == "mimikyu-disguised"
-    ? "Mimikyu"
-    : data == "tapu-koko"
-    ? "Tapu Koko"
-    : data == "tapu-lele"
-    ? "Tapu Lele"
-    : data == "tapu-bulu"
-    ? "Tapu Bulu"
-    : data == "tapu-fini"
-    ? "Tapu Fini"
+    ? "mimikyu"
+    : data == "oricorio-baile"
+    ? "oricorio"
+    : data == "lycanroc-midday"
+    ? "lycanroc"
+    : data == "wishiwashi-solo"
+    ? "wishiwashi"
     : data;
 }
 
@@ -466,3 +474,4 @@ function anim_STOP(data) {
     direction: "alternate",
   });
 }
+
